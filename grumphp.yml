@@ -1,9 +1,9 @@
 grumphp:
   tasks:
-    phpcsfixer2:
-      config: .php-cs-fixer.php
-      allow_risky: true
-      verbose: true
+#    phpcsfixer2:
+#      config: .php-cs-fixer.php
+#      allow_risky: true
+#      verbose: true
     git_commit_message:
       allow_empty_message: false
       enforce_capitalized_subject: false
