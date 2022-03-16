@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Traps\Overview;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('templates/base');
 });
+
+
+Route::get('/trap', [Overview::class, 'run']);

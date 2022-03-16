@@ -16,6 +16,9 @@
         <!-- TITLE -->
         <title>Trappy - @yield('title')</title>
 
+        <!-- JQUERY JS -->
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+
         <!-- BOOTSTRAP CSS -->
         <link id="style" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
@@ -45,8 +48,6 @@
             </div>
         </div>
 
-        <!-- JQUERY JS -->
-        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 
         <!-- BOOTSTRAP JS -->
         <script src="{{ asset('assets/plugins/bootstrap/js/popper.min.js') }}"></script>
