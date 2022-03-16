@@ -24,8 +24,8 @@ class Overview extends AbstractOverviewController
             [
                 'name' => 'Test 1',
                 'description' => 'This is a test 1',
-                'battery' => 5
-            ]
+                'battery' => 5,
+            ],
         ];
     }
 }

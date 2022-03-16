@@ -32,6 +32,5 @@ abstract class Controller extends BaseController
 
     protected function loadData(): void
     {
-
     }
 }

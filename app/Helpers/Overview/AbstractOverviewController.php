@@ -4,11 +4,11 @@ namespace App\Helpers\Overview;
 
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Http\Controllers\Controller;
-use View;
 
 abstract class AbstractOverviewController extends Controller
 {
     private DataTable $dataTable;
+
     private array $data;
 
     protected function loadData(): void
@@ -30,7 +30,7 @@ abstract class AbstractOverviewController extends Controller
         $parameters = [
             'title' => $dataTable->getName(),
             'headers' => $headers,
-            'rows' => $rows
+            'rows' => $rows,
         ];
 
         return View('templates/overview', $parameters);

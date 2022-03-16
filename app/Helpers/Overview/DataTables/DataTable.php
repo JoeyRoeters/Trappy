@@ -5,7 +5,9 @@ namespace App\Helpers\Overview\DataTables;
 class DataTable
 {
     private array $headers = [];
+
     private array $rows = [];
+
     private string $name;
 
     public function __construct(string $name)

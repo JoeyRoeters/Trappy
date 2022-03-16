@@ -18,5 +18,4 @@ Route::get('/', function () {
     return view('templates/base');
 });
 
-
 Route::get('/trap', [Overview::class, 'run']);
