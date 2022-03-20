@@ -83,13 +83,13 @@
                                 <!-- SIDE-MENU -->
                                 <div class="dropdown d-flex profile-1">
                                     <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                        <img src="../assets/images/users/21.jpg" alt="profile-user" class="avatar  profile-user brround cover-image">
+                                        <span class="avatar avatar-md brround me-3 text-black align-self-center cover-image">{{ substr(Auth::user()->name, 0, 1) }}</span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                         <div class="drop-heading">
                                             <div class="text-center">
-                                                <h5 class="text-dark mb-0 fs-14 fw-semibold">Percy Kewshun</h5>
-                                                <small class="text-muted">Senior Admin</small>
+                                                <h5 class="text-dark mb-0 fs-14 fw-semibold">{{ Auth::user()->name }}</h5>
+                                                <small class="text-muted">{{ Auth::user()->email }}</small>
                                             </div>
                                         </div>
                                         <div class="dropdown-divider m-0"></div>
@@ -103,7 +103,7 @@
                                         <a class="dropdown-item" href="lockscreen.html">
                                             <i class="dropdown-icon fe fe-lock"></i> Lockscreen
                                         </a>
-                                        <a class="dropdown-item" href="login.html">
+                                        <a class="dropdown-item" href="{{ route('auth.logout') }}">
                                             <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                         </a>
                                     </div>
@@ -134,13 +134,13 @@
                         <h3>Main</h3>
                     </li>
                     <li class="slide">
-                        <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
+                        <a class="side-menu__item" data-bs-toggle="slide" href="{{ route('dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                     </li>
                     <li class="sub-category">
                         <h3>General</h3>
                     </li>
                     <li>
-                        <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-wifi"></i><span class="side-menu__label">Traps</span></a>
+                        <a class="side-menu__item" href="{{ route('traps') }}"><i class="side-menu__icon fe fe-wifi"></i><span class="side-menu__label">Traps</span></a>
                     </li>
                     <li>
                         <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-map-pin"></i><span class="side-menu__label">Locations</span></a>
