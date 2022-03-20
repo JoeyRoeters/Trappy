@@ -7,12 +7,9 @@ use App\Http\Requests\LoginRequest;
 use Auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
-/**
- *
- */
 class AuthController extends Controller
 {
     /**
