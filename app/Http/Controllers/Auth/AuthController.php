@@ -5,17 +5,16 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Auth;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 
 class AuthController extends Controller
 {
     /**
-     * @return Application|Redirector
+     * @return RedirectResponse|View
      */
-    public function showPage(): Redirector|Application
+    public function showPage(): RedirectResponse|View
     {
         if (Auth::check()) {
             return redirect('/');
@@ -26,9 +25,9 @@ class AuthController extends Controller
 
     /**
      * @param LoginRequest $request
-     * @return RedirectResponse|Redirector
+     * @return RedirectResponse
      */
-    public function login(LoginRequest $request): Redirector|Application
+    public function login(LoginRequest $request): RedirectResponse
     {
         $credentials = $request->only(['email', 'password']);
 
@@ -43,9 +42,9 @@ class AuthController extends Controller
 
     /**
      * @param Request $request
-     * @return Redirector
+     * @return RedirectResponse
      */
-    public function logout(Request $request): Redirector
+    public function logout(Request $request): RedirectResponse
     {
         $request->session()->invalidate();
 
