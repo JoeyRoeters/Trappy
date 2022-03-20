@@ -1,0 +1,17 @@
+grumphp:
+  tasks:
+#    phpcsfixer2:
+#      config: .php-cs-fixer.php
+#      allow_risky: true
+#      verbose: true
+    git_commit_message:
+      allow_empty_message: false
+      enforce_capitalized_subject: false
+      enforce_no_subject_punctuations: false
+      enforce_no_subject_trailing_period: false
+      enforce_single_lined_subject: false
+      max_body_width: 0
+      max_subject_width: 0
+      matchers:
+        Must start with Jira ticket number (GRO-xxxx - Description) or be a merge-commit: /^(((?:T|GRO-)\d+( & (?:T|GRO-)\d+)* - [A-Z]\w+)|(Merge ))/
+      case_insensitive: false
