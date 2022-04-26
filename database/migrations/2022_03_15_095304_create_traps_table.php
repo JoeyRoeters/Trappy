@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->string('name');
             $table->longText('description')->nullable();
             $table->integer('location_id')->nullable();
+            $table->enum('status', ['active', 'inactive', 'error'])->default('inactive');
+            $table->string('identifier');
             $table->timestamps();
             $table->softDeletes();
         });

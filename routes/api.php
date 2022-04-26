@@ -10,3 +10,12 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+use App\Http\Controllers\Traps\TrapController;
+
+//For testing purposes
+Route::post('/trap', [TrapController::class, 'store']);
+
+//API Routes
+Route::post('/trap/connect', [TrapController::class, 'connect']);
+
