@@ -18,4 +18,3 @@ Route::post('/trap', [TrapController::class, 'store']);
 
 //API Routes
 Route::post('/trap/connect', [TrapController::class, 'connect']);
-

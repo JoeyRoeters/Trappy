@@ -5,14 +5,13 @@ namespace App\Traits;
 use App\Models\Trap;
 use Illuminate\Support\Facades\Hash;
 
-trait HasIdentifier {
-
-    function identifyTrap($identifier) {
-
+trait HasIdentifier
+{
+    public function identifyTrap($identifier)
+    {
         $traps = Trap::all();
 
-        foreach ($traps as $trap)
-        {
+        foreach ($traps as $trap) {
             if (Hash::check($identifier, $trap->identifier)) {
                 return $trap;
             }

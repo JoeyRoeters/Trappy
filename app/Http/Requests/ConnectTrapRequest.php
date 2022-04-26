@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\TrapExistenceCheck;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ConnectTrapRequest extends FormRequest

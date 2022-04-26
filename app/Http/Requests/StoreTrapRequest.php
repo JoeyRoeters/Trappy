@@ -17,7 +17,7 @@ class StoreTrapRequest extends FormRequest
             'name' => 'string|required',
             'description' => 'string|required',
             'location_id' => 'required|exists:locations,id',
-            'identifier' => 'string|required'
+            'identifier' => 'string|required',
         ];
     }
 }

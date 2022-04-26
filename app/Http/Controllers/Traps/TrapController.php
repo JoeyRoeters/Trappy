@@ -23,7 +23,7 @@ class TrapController extends Controller
             'name' => $data->name,
             'description' => $data->description,
             'location_id' => $data->location_id,
-            'identifier' => Hash::make($data->identifier)
+            'identifier' => Hash::make($data->identifier),
         ]);
 
         return response('Trap created', 201);
@@ -37,22 +37,22 @@ class TrapController extends Controller
 
         if (!$trap) {
             return response()->json([
-                'message' => 'Trap not found'
+                'message' => 'Trap not found',
             ], 404);
         }
 
         if ($trap->status !== 'inactive') {
             return response()->json([
-                'error' => 'Trap already connected'
+                'error' => 'Trap already connected',
             ]);
         }
 
         $trap->update([
-            'status' => 'active'
+            'status' => 'active',
         ]);
 
         return response()->json([
-            'status' => 'active'
+            'status' => 'active',
         ], 200);
     }
 }
