@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Traps\Overview;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('templates/base');
+// Authenticated routes
+Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return view('templates/base');
+    })->name('dashboard');
+
+    Route::get('/traps', [Overview::class, 'run'])->name('traps');
 });
 
-Route::get('/trap', [Overview::class, 'run']);
+// Unauthenticated routes
+Route::get('/login', [AuthController::class, 'showPage'])->name('view.login');
+
+// Authentication routes
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
