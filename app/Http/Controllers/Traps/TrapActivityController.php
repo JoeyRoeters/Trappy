@@ -20,23 +20,23 @@ class TrapActivityController extends Controller
 
         if (!$trap) {
             return response()->json([
-                'message' => 'Trap not found'
+                'message' => 'Trap not found',
             ], 404);
         }
 
         if ($trap->status === 'inactive') {
             return response()->json([
-                'message' => 'Trap not connected'
+                'message' => 'Trap not connected',
             ]);
         }
 
         TrapActivity::create([
             'trap_id' =>$trap->id,
-            'type' => $request->type
+            'type' => $request->type,
         ]);
 
         return response()->json([
-            'message' => 'Status updated'
+            'message' => 'Status updated',
         ], 200);
     }
 }

@@ -9,7 +9,6 @@ use App\Models\Trap;
 use App\Traits\HasIdentifier;
 use Hash;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 
 class TrapController extends Controller
 {
@@ -21,11 +20,11 @@ class TrapController extends Controller
 
         $identifierCheck = $this->identifyTrap($data->identifier);
 
-        if($identifierCheck !== null) {
+        if ($identifierCheck !== null) {
             return response()->json([
-                'message' => 'Trap already exists'
+                'message' => 'Trap already exists',
             ], 422);
-        };
+        }
 
         Trap::create([
             'name' => $data->name,
