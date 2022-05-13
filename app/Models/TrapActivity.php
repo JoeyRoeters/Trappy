@@ -31,4 +31,6 @@ use Illuminate\Support\Carbon;
 class TrapActivity extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['trap_id', 'type'];
 }

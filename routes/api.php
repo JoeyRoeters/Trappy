@@ -11,10 +11,15 @@
 |
 */
 
+use App\Http\Controllers\Traps\TrapActivityController;
 use App\Http\Controllers\Traps\TrapController;
+use App\Models\TrapActivity;
 
 //For testing purposes
 Route::post('/trap', [TrapController::class, 'store']);
 
 //API Routes
-Route::post('/trap/connect', [TrapController::class, 'connect']);
+Route::prefix('trap')->group( function () {
+    Route::post('/connect', [TrapController::class, 'connect']);
+    Route::post('/activity', [TrapActivityController::class, 'store']);
+});

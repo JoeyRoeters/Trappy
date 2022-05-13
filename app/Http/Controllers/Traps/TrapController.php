@@ -15,9 +15,17 @@ class TrapController extends Controller
 {
     use HasIdentifier;
 
-    public function store(StoreTrapRequest $request): Response
+    public function store(StoreTrapRequest $request)
     {
         $data = (object) $request->validated();
+
+        $identifierCheck = $this->identifyTrap($data->identifier);
+
+        if($identifierCheck !== null) {
+            return response()->json([
+                'message' => 'Trap already exists'
+            ], 422);
+        };
 
         Trap::create([
             'name' => $data->name,

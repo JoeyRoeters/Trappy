@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\TrapController;
 use App\Http\Controllers\Traps\Overview;
 use Illuminate\Support\Facades\Route;
 
