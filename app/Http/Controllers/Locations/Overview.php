@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Locations;
 use App\Helpers\Overview\AbstractOverviewController;
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Models\Location;
-use App\Models\Trap;
 
 class Overview extends AbstractOverviewController
 {
@@ -27,7 +26,7 @@ class Overview extends AbstractOverviewController
         foreach ($locations as $location) {
             $data[] = [
                 'name' => $location->name,
-                'description' => $location->description
+                'description' => $location->description,
             ];
         }
 

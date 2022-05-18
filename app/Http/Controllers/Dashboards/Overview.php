@@ -8,7 +8,6 @@ use App\Models\TrapActivity;
 
 class Overview extends Controller
 {
-
     protected function showPage()
     {
         $parameters = [];
@@ -18,7 +17,7 @@ class Overview extends Controller
             'total' => Trap::count(),
             'catches' => TrapActivity::whereType(TrapActivity::TYPE_CATCH)->count(),
             'activity' => TrapActivity::count(),
-            'actions' => $this->getClosedTraps()
+            'actions' => $this->getClosedTraps(),
         ];
 
         return View('dashboards/overview', $parameters);
@@ -35,7 +34,7 @@ class Overview extends Controller
             $data[] = [
                 'name' => $trap->name,
                 'location' => $location,
-                'action' => 'The gate of the trap is closed'
+                'action' => 'The gate of the trap is closed',
             ];
         }
 
