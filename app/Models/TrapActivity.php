@@ -33,5 +33,6 @@ class TrapActivity extends Model
     use HasFactory;
 
     public const TYPE_SYNC = 'sync';
+
     public const TYPE_CATCH = 'catch';
 }
