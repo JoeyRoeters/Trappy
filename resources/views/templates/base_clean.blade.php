@@ -11,10 +11,10 @@
         <meta name="keywords" content="trappy">
 
         <!-- FAVICON -->
-        <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico" />
+{{--        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo_only.png') }}" />--}}
 
         <!-- TITLE -->
-        <title>Trappy - @yield('title')</title>
+{{--        <title>Trappy - @yield('title')</title>--}}
 
         <!-- JQUERY JS -->
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -36,7 +36,7 @@
 
     </head>
 
-    <body class="app sidebar-mini ltr">
+    <body class="app sidebar-mini ltr sidenav-toggled"">
         <!-- GLOABAL LOADER -->
         <div id="global-loader">
             <img src="{{ asset('assets/images/loader.svg') }}" class="loader-img" alt="Loader">

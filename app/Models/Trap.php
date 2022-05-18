@@ -34,6 +34,10 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Trap whereName($value)
  * @method static Builder|Trap whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $status
+ * @method static Builder|Trap whereStatus($value)
+ * @property int $is_open
+ * @method static Builder|Trap whereIsOpen($value)
  */
 class Trap extends Model
 {
