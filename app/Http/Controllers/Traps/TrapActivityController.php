@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Traps;
 
+use App\Events\TrapCatch;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTrapActivityRequest;
 use App\Models\TrapActivity;
@@ -30,13 +31,17 @@ class TrapActivityController extends Controller
             ]);
         }
 
+        if ($request->type === 'catch') {
+            TrapCatch::dispatch($request->id);
+        }
+
         TrapActivity::create([
             'trap_id' =>$trap->id,
             'type' => $request->type,
         ]);
 
         return response()->json([
-            'message' => 'Status updated',
-        ], 200);
+            'message' => 'Activity created',
+        ], 201);
     }
 }
