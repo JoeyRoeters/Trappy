@@ -35,4 +35,6 @@ class TrapActivity extends Model
     public const TYPE_SYNC = 'sync';
 
     public const TYPE_CATCH = 'catch';
+
+    protected $fillable = ['trap_id', 'type'];
 }

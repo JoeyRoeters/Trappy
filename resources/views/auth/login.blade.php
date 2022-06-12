@@ -25,17 +25,17 @@
                     <div class="panel-body tabs-menu-body p-0 pt-5">
                         <div class="tab-content">
                             <div class="tab-pane active">
-                                    <div class="wrap-input100 input-group">
+                                    <div class="wrap-input100 input-group" style="width: 361px !important;">
                                         <input class="input100 form-control @error('email') is-invalid @enderror" type="text" name="email" placeholder="Email">
-                                        @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                        @error('email')<span class="invalid-feedback">{{ $message }}</span>@enderror
                                     </div>
 
-                                    <div class="wrap-input100 input-group" id="Password-toggle">
+                                    <div class="wrap-input100 input-group" id="Password-toggle" style="width: 361px !important;">
                                         <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
                                             <i class="zmdi zmdi-eye text-muted" aria-hidden="true"></i>
                                         </a>
                                         <input class="input100 form-control @error('password') is-invalid @enderror" name="password" type="password" placeholder="Password">
-                                        @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                        @error('password')<span class="invalid-feedback">{{ $message }}</span>@enderror
                                     </div>
 
                                     <div class="text-end pt-4">
