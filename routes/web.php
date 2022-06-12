@@ -22,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardOverview::class, 'showPage'])->name('dashboard');
 
     Route::get('/traps', [TrapOverview::class, 'run'])->name('traps');
+    Route::get('/traps/{id}', function ($id) {
+        return 'appel';
+    })->name('traps.id');
+
     Route::get('/locations', [LocationOverview::class, 'run'])->name('locations');
 });
 

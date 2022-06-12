@@ -19,6 +19,7 @@ class Overview extends Controller
             'activity' => TrapActivity::count(),
             'actions' => $this->getClosedTraps(),
         ];
+        $parameters['activities'] = $this->getLatestActivities();
 
         return View('dashboards/overview', $parameters);
     }
@@ -29,12 +30,27 @@ class Overview extends Controller
 
         $traps = Trap::whereIsOpen(false)->get();
         foreach ($traps as $trap) {
-            $location = $trap->location?->name ?: 'Not coupled';
-
             $data[] = [
                 'name' => $trap->name,
-                'location' => $location,
+                'location' => $trap->getLocationName(),
                 'action' => 'The gate of the trap is closed',
+            ];
+        }
+
+        return $data;
+    }
+
+    private function getLatestActivities(): array
+    {
+        $data = [];
+
+        $activities = TrapActivity::whereType(TrapActivity::TYPE_CATCH)->orderByDesc('created_at')->take(5)->get();
+        foreach ($activities as $activity) {
+            $data[] = [
+                'name' => $activity->trap->name,
+                'location' => $activity->trap->getLocationName(),
+                'date' => $activity->created_at?->format('d F H:i'),
+                'url' => route('traps.id', $activity->trap_id)
             ];
         }
 

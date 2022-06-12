@@ -54,6 +54,11 @@ class Trap extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public function getLocationName(): string
+    {
+        return $this->location?->name ?: 'Not coupled';
+    }
+
     public function activities(): HasMany
     {
         return $this->hasMany(TrapActivity::class);
