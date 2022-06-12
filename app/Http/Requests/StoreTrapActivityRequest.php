@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTrapActivityRequest extends FormRequest
 {
@@ -15,7 +16,7 @@ class StoreTrapActivityRequest extends FormRequest
     {
         return [
             'id' => 'required|string',
-            'type' => 'required|string',
+            'type' => ['required', 'string', Rule::in(['sync', 'catch'])]
         ];
     }
 }
