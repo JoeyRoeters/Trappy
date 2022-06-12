@@ -47,6 +47,8 @@ class Trap extends Model
         'name',
         'description',
         'location_id',
+        'status',
+        'identifier',
     ];
 
     public function location(): BelongsTo

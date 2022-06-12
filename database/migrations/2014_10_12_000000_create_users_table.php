@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->json('notification_settings')->default(json_encode(['enabled' => true, 'notify_email' => true, 'notify_sms' => true, 'locations' => []]));
+            $table->json('notification_settings');
             $table->rememberToken();
             $table->timestamps();
         });

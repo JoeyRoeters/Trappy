@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent;
+use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +36,8 @@ class TrapActivity extends Model
 
     public const TYPE_SYNC = 'sync';
     public const TYPE_CATCH = 'catch';
+
+    protected $fillable = ['trap_id', 'type'];
 
     public function trap(): BelongsTo
     {

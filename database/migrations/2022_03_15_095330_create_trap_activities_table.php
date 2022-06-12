@@ -15,8 +15,7 @@ return new class extends Migration {
         Schema::create('trap_activities', function (Blueprint $table) {
             $table->id();
             $table->integer('trap_id');
-            $table->enum('type', ['sync', 'catch']);
-            $table->json('data');
+            $table->enum('type', ['catch', 'sync']);
             $table->timestamps();
         });
     }
