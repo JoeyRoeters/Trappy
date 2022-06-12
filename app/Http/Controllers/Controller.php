@@ -23,8 +23,6 @@ abstract class Controller extends BaseController
         return new View('404');
     }
 
-    abstract protected function showPage();
-
     protected function exists(): bool
     {
         return true;
