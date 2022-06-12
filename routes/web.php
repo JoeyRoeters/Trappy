@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Traps\Overview;
+use App\Http\Controllers\Dashboards\Overview as DashboardOverview;
+use App\Http\Controllers\Locations\Overview as LocationOverview;
+use App\Http\Controllers\Traps\Overview as TrapOverview;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('templates/base');
-    })->name('dashboard');
+    Route::get('/', [DashboardOverview::class, 'showPage'])->name('dashboard');
 
-    Route::get('/traps', [Overview::class, 'run'])->name('traps');
+    Route::get('/traps', [TrapOverview::class, 'run'])->name('traps');
+    Route::get('/locations', [LocationOverview::class, 'run'])->name('locations');
 });
 
 // Unauthenticated routes

@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Traps;
+namespace App\Http\Controllers\Locations;
 
 use App\Helpers\Overview\AbstractOverviewController;
 use App\Helpers\Overview\DataTables\DataTable;
-use App\Models\Trap;
+use App\Models\Location;
 
 class Overview extends AbstractOverviewController
 {
     protected function overview(): DataTable
     {
-        $dataTable = DataTable::create('Traps');
+        $dataTable = DataTable::create('Locations');
 
         $dataTable->addHeader('name', 'Name');
         $dataTable->addHeader('description', 'Description');
-        $dataTable->addHeader('battery', 'Battery %');
 
         return $dataTable;
     }
@@ -23,12 +22,11 @@ class Overview extends AbstractOverviewController
     {
         $data = [];
 
-        $traps = Trap::get();
-        foreach ($traps as $trap) {
+        $locations = Location::get();
+        foreach ($locations as $location) {
             $data[] = [
-                'name' => $trap->name,
-                'description' => $trap->description,
-                'battery' => 100,
+                'name' => $location->name,
+                'description' => $location->description,
             ];
         }
 

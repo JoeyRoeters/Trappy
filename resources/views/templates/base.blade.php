@@ -5,12 +5,8 @@
     <div class="app-header header sticky">
         <div class="container-fluid main-container">
             <div class="d-flex">
-                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
+{{--                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>--}}
                 <!-- sidebar-toggle-->
-                <a class="logo-horizontal " href="index.html">
-                    <img src="{{ asset('assets/images/logo_text.png') }}" class=" desktop-logo" alt="logo">
-                </a>
-                <!-- LOGO -->
 
                 <div class="d-flex order-lg-2 ms-auto header-right-icons">
                     <div class="navbar navbar-collapse responsive-navbar p-0">
@@ -123,7 +119,7 @@
         <div class="app-sidebar">
             <div class="side-header">
                 <a class="header-brand1" href="index.html">
-                    <img src="{{ asset('assets/images/logo_text.png') }}" class="header-brand-img p-1" alt="logo">
+                    <img src="{{ asset('assets/images/logo_only.png') }}" height="50" class="header-brand-img p-1" alt="logo">
                 </a>
                 <!-- LOGO -->
             </div>
@@ -143,7 +139,7 @@
                         <a class="side-menu__item" href="{{ route('traps') }}"><i class="side-menu__icon fe fe-wifi"></i><span class="side-menu__label">Traps</span></a>
                     </li>
                     <li>
-                        <a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-map-pin"></i><span class="side-menu__label">Locations</span></a>
+                        <a class="side-menu__item" href="{{ route('locations') }}"><i class="side-menu__icon fe fe-map-pin"></i><span class="side-menu__label">Locations</span></a>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-settings"></i><span class="side-menu__label">More</span><i class="angle fe fe-chevron-right"></i></a>

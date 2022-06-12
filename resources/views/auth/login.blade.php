@@ -12,8 +12,8 @@
             <form action="{{ route('auth.login') }}" method="post" class="login100-form validate-form">
                 @csrf
                 <span class="login100-form-title pb-5 d-flex justify-content-center align-items-center">
-                                <img src="{{ asset('assets/images/logo_only.png') }}" class="mx-3" height="50" alt="logo">
-                                Trappy Login
+                                <img src="{{ asset('assets/images/logo_only.png') }}" style="position: absolute" height="100" alt="logo">
+                                <span class="pt-9">Login</span>
                             </span>
                 <div class="panel panel-primary">
                     @error('failed')
