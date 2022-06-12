@@ -16,7 +16,7 @@ class StoreTrapActivityRequest extends FormRequest
     {
         return [
             'id' => 'required|string',
-            'type' => ['required', 'string', Rule::in(['sync', 'catch'])]
+            'type' => ['required', 'string', Rule::in(['sync', 'catch'])],
         ];
     }
 }
