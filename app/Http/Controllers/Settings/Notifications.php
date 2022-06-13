@@ -30,11 +30,7 @@ class Notifications extends Controller
     {
         $notify_email = $request->has('notify_email');
         $notify_sms = $request->has('notify_sms');
-        $traps = $request->get('traps');
-
-        if ($traps === null) {
-            $traps = [];
-        }
+        $traps = $request->get('traps') === null ? [] : $request->get('traps');
 
         Auth::user()->update([
             'notification_settings' => [
