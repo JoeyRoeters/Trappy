@@ -3,11 +3,7 @@
 namespace App\Events;
 
 use Carbon\Carbon;
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -30,5 +26,4 @@ class TrapCatch
 
         $this->time = Carbon::now()->format('d-m-Y H:i:s');
     }
-
 }

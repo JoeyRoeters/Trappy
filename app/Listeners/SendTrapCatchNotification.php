@@ -12,6 +12,7 @@ use Mail;
 class SendTrapCatchNotification implements ShouldQueue
 {
     use HasIdentifier;
+
     /**
      * Create the event listener.
      *
@@ -33,12 +34,12 @@ class SendTrapCatchNotification implements ShouldQueue
         $trap = $this->identifyTrap($event->identifier);
         $time = $event->time;
 
-        $emailUsers = User::where('notification_settings->notify_email', True)
+        $emailUsers = User::where('notification_settings->notify_email', true)
             ->whereJsonContains('notification_settings->traps', $trap->id)
             ->get();
 
         //TODO
-        $smsUsers = User::where('notification_settings->notify_sms', True)
+        $smsUsers = User::where('notification_settings->notify_sms', true)
             ->whereJsonContains('notification_settings->traps', $trap->id)
             ->get();
 
