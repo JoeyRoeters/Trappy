@@ -145,7 +145,7 @@
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i class="side-menu__icon fe fe-settings"></i><span class="side-menu__label">More</span><i class="angle fe fe-chevron-right"></i></a>
                         <ul class="slide-menu">
                             <li class="side-menu-label1"><a href="javascript:void(0)">More</a></li>
-                            <li><a href="maps1.html" class="slide-item">Notifications</a></li>
+                            <li><a href="{{ route('notifications') }}" class="slide-item">Notifications</a></li>
                             <li><a href="maps2.html" class="slide-item">Settings</a></li>
                         </ul>
                     </li>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboards\Overview as DashboardOverview;
 use App\Http\Controllers\Locations\Overview as LocationOverview;
 use App\Http\Controllers\Traps\Overview as TrapOverview;
+use App\Http\Controllers\Settings\Notifications as NotificationSettings;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 // Authenticated routes
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardOverview::class, 'showPage'])->name('dashboard');
-
+    Route::get('/notifications', [NotificationSettings::class, 'showPage'])->name('notifications');
+    Route::put('/notifications', [NotificationSettings::class, 'update'])->name('notifications.update');
     Route::get('/traps', [TrapOverview::class, 'run'])->name('traps');
     Route::get('/locations', [LocationOverview::class, 'run'])->name('locations');
 });

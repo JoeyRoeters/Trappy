@@ -84,4 +84,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'notification_settings' => 'array'
     ];
+
+    protected $attributes = [
+        'notification_settings' => '{
+            "notify_email": false,
+            "notify_sms": false,
+            "traps": []
+        }'
+    ];
 }
