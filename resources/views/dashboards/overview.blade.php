@@ -67,6 +67,9 @@
             <div class="row row-sm">
                 <div class="col-lg-8">
                     <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title fw-semibold">Action needed</h4>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
@@ -74,7 +77,7 @@
                                     <tr>
                                         <th class="wd-15p border-bottom-0">Trap</th>
                                         <th class="wd-15p border-bottom-0">Location</th>
-                                        <th class="wd-15p border-bottom-0">Action needed</th>
+                                        <th class="wd-15p border-bottom-0">Info</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -99,14 +102,15 @@
                         </div>
                         <div class="card-body pb-0">
                             <ul class="task-list">
-                                <li class="d-sm-flex">
-                                    <div>
-                                        <i class="task-icon bg-primary"></i>
-                                        <h6 class="fw-semibold">Task Finished<span class="text-muted fs-11 mx-2 fw-normal">09 July 2021</span> </h6>
-                                        <p class="text-muted fs-12">Adam Berry finished task on<a href="javascript:void(0)" class="fw-semibold"> Project Management</a></p>
-                                    </div>
-                                    <div class="ms-auto d-md-flex"> <a href="javascript:void(0)" class="text-muted me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-label="Edit" data-bs-original-title="Edit"><span class="fe fe-edit"></span></a> <a href="javascript:void(0)" class="text-muted"><span class="fe fe-trash-2"></span></a> </div>
-                                </li>
+                                @foreach($activities as $activity)
+                                    <li class="d-sm-flex">
+                                        <div>
+                                            <i class="task-icon bg-primary"></i>
+                                            <h6 class="fw-semibold">{{ $activity['name'] }}<span class="text-muted fs-11 mx-2 fw-normal">{{ $activity['date'] }}</span> </h6>
+                                            <p class="text-muted fs-12">There was a catch at {{ $activity['location'] }} on trap <a href="{{ $activity['url'] }}" class="fw-semibold"> {{ $activity['name'] }}</a></p>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

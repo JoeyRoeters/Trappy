@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
@@ -27,6 +27,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|TrapActivity whereType($value)
  * @method static Builder|TrapActivity whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read \App\Models\Trap|null $trap
  */
 class TrapActivity extends Model
 {
@@ -37,4 +38,9 @@ class TrapActivity extends Model
     public const TYPE_CATCH = 'catch';
 
     protected $fillable = ['trap_id', 'type'];
+
+    public function trap(): BelongsTo
+    {
+        return $this->belongsTo(Trap::class);
+    }
 }

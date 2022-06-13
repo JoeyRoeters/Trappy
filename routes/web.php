@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/notifications', [NotificationSettings::class, 'showPage'])->name('notifications');
     Route::put('/notifications', [NotificationSettings::class, 'update'])->name('notifications.update');
     Route::get('/traps', [TrapOverview::class, 'run'])->name('traps');
+    Route::get('/traps/{id}', function ($id) {
+        return 'appel';
+    })->name('traps.id');
+
     Route::get('/locations', [LocationOverview::class, 'run'])->name('locations');
 });
 
