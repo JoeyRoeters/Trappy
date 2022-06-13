@@ -16,7 +16,7 @@ class UpdateNotificationsRequest extends FormRequest
         return [
             'notify_email' => ['nullable'],
             'notify_sms' => ['nullable'],
-            'traps' => ['nullable', 'array']
+            'traps' => ['nullable', 'array'],
         ];
     }
 }

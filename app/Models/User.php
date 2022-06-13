@@ -90,6 +90,6 @@ class User extends Authenticatable
             "notify_email": false,
             "notify_sms": false,
             "traps": []
-        }'
+        }',
     ];
 }

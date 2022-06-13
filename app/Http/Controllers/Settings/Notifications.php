@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateNotificationsRequest;
 use App\Models\Trap;
-use App\Models\User;
 use Auth;
 
 class Notifications extends Controller
@@ -21,7 +20,7 @@ class Notifications extends Controller
         $parameters['notification_settings'] = [
             'notify_email' => $notification_settings['notify_email'],
             'notify_sms' => $notification_settings['notify_sms'],
-            'traps' => $notification_settings['traps']
+            'traps' => $notification_settings['traps'],
         ];
 
         return View('settings/notifications', $parameters);
@@ -33,7 +32,7 @@ class Notifications extends Controller
         $notify_sms = $request->has('notify_sms');
         $traps = $request->get('traps');
 
-        if($traps === null) {
+        if ($traps === null) {
             $traps = [];
         }
 
@@ -41,8 +40,8 @@ class Notifications extends Controller
             'notification_settings' => [
                 'notify_email' => $notify_email,
                 'notify_sms' => $notify_sms,
-                'traps' => array_map('intval', $traps)
-            ]
+                'traps' => array_map('intval', $traps),
+            ],
         ]);
 
         return back();
