@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreTrapActivityRequest extends FormRequest
 {
@@ -17,7 +16,7 @@ class StoreTrapActivityRequest extends FormRequest
         return [
             'identifier' => 'required|string',
             'is_open' => 'required|boolean',
-            'battery' => 'required|string'
+            'battery' => 'required|string',
         ];
     }
 }

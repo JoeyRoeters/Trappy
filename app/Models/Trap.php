@@ -18,7 +18,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $description
  * @property int|null $location_id
  * @property string|null $battery
- * @property boolean|null $is_open
+ * @property bool|null $is_open
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
