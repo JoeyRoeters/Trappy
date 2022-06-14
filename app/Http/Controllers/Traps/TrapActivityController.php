@@ -13,13 +13,13 @@ class TrapActivityController extends Controller
 {
     use HasIdentifier;
 
-    public function store(StoreTrapActivityRequest $request): JsonResponse
+    public function sync(StoreTrapActivityRequest $request): JsonResponse
     {
         $data = (object) $request->validated();
 
-        $trap = $this->identifyTrap($data->id);
+        $trap = $this->identifyTrap($data->identifier);
 
-        if (!$trap) {
+        if ($trap === null) {
             return response()->json([
                 'message' => 'Trap not found',
             ], 404);
@@ -28,20 +28,33 @@ class TrapActivityController extends Controller
         if ($trap->status === 'inactive') {
             return response()->json([
                 'message' => 'Trap not connected',
-            ]);
+            ], 422);
         }
 
-        if ($request->type === 'catch') {
-            TrapCatch::dispatch($request->id);
+        $type = $trap->is_open == 1 && $data->is_open == 0 ? 'catch' : 'sync';
+
+        if ($type === 'catch') {
+            TrapCatch::dispatch($trap);
         }
+
+        $trap->is_open = $data->is_open;
+        $trap->battery = $this->getBattery($data->battery);
+        $trap->save();
 
         TrapActivity::create([
             'trap_id' =>$trap->id,
-            'type' => $request->type,
+            'type' => $type,
         ]);
 
         return response()->json([
-            'message' => 'Activity created',
-        ], 201);
+            'message' => 'Synced',
+        ], 200);
+    }
+
+    public function getBattery($battery): string
+    {
+        $boom = explode(',', explode(':', $battery)[1]);
+
+        return $boom[1];
     }
 }

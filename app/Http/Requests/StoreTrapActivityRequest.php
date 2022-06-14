@@ -15,8 +15,9 @@ class StoreTrapActivityRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|string',
-            'type' => ['required', 'string', Rule::in(['sync', 'catch'])],
+            'identifier' => 'required|string',
+            'is_open' => 'required|boolean',
+            'battery' => 'required|string'
         ];
     }
 }

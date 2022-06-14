@@ -5,14 +5,11 @@ namespace App\Listeners;
 use App\Events\TrapCatch;
 use App\Mail\TrapCatchMail;
 use App\Models\User;
-use App\Traits\HasIdentifier;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 
 class SendTrapCatchNotification implements ShouldQueue
 {
-    use HasIdentifier;
-
     /**
      * Create the event listener.
      *
@@ -31,7 +28,7 @@ class SendTrapCatchNotification implements ShouldQueue
      */
     public function handle(TrapCatch $event)
     {
-        $trap = $this->identifyTrap($event->identifier);
+        $trap = $event->trap;
         $time = $event->time;
 
         $emailUsers = User::where('notification_settings->notify_email', true)

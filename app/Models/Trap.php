@@ -17,6 +17,8 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property string|null $description
  * @property int|null $location_id
+ * @property string|null $battery
+ * @property boolean|null $is_open
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -36,7 +38,6 @@ use Illuminate\Support\Carbon;
  * @mixin \Eloquent
  * @property string $status
  * @method static Builder|Trap whereStatus($value)
- * @property int $is_open
  * @method static Builder|Trap whereIsOpen($value)
  */
 class Trap extends Model
@@ -48,6 +49,8 @@ class Trap extends Model
         'description',
         'location_id',
         'status',
+        'battery',
+        'is_open',
         'identifier',
     ];
 

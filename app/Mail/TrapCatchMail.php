@@ -36,8 +36,8 @@ class TrapCatchMail extends Mailable
     public function build()
     {
         return $this
+            ->replyTo('admin@trappy.com')
             ->subject('Trappy notification')
-            ->attach(public_path('/assets/images/email_logo.png'))
             ->view('mail.trapcatch');
     }
 }

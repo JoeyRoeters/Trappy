@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Trap;
 use Carbon\Carbon;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -11,7 +12,7 @@ class TrapCatch
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public String $identifier;
+    public Trap $trap;
 
     public String $time;
 
@@ -20,9 +21,9 @@ class TrapCatch
      *
      * @return void
      */
-    public function __construct($identifier)
+    public function __construct($trap)
     {
-        $this->identifier = $identifier;
+        $this->trap = $trap;
 
         $this->time = Carbon::now()->format('d-m-Y H:i:s');
     }
