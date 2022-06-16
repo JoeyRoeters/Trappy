@@ -31,8 +31,10 @@ class SendTrapCatchNotification implements ShouldQueue
         $trap = $event->trap;
         $time = $event->time;
 
+        \Illuminate\Support\Facades\Log::info($trap->id);
         $emailUsers = User::where('notification_settings->notify_email', true)
             ->whereJsonContains('notification_settings->traps', $trap->id)
+            ->orWhere([['notification_settings->notify_email', true], ['notification_settings->traps', '=', '[]']])
             ->get();
 
         //TODO

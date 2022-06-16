@@ -45,7 +45,11 @@
                                 </div>
                             </div>
                             <div class="card-header">
-                                <div class="card-title">Notify me for traps:</div>
+                                <div>
+                                    <div class="card-title">Notify me for traps:</div>
+                                    <br>
+                                    <div class="card-subtitle mb-2 text-muted">Select no traps to receive notifications for all.</div>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
@@ -59,7 +63,7 @@
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mt-4 mb-0">Save</button>
-                                
+
                             </div>
                         </div>
                     </div>
