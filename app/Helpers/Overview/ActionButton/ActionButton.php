@@ -20,7 +20,7 @@ class ActionButton
             [
                 'icon' => $this->icon,
                 'url' => $this->url,
-                'title' => $this->title
+                'title' => $this->title,
             ]
         )->render();
     }

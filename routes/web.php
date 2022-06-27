@@ -3,7 +3,6 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboards\Overview as DashboardOverview;
 use App\Http\Controllers\Settings\Notifications as NotificationSettings;
-use App\Http\Controllers\Traps\Overview as TrapOverview;
 use Illuminate\Support\Facades\Route;
 
 /*

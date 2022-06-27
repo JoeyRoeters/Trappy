@@ -6,7 +6,6 @@ use App\Helpers\Overview\AbstractOverviewController;
 use App\Helpers\Overview\ActionButton\ActionButton;
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Models\Location;
-use League\CommonMark\Util\HtmlElement;
 
 class Overview extends AbstractOverviewController
 {
@@ -30,7 +29,7 @@ class Overview extends AbstractOverviewController
             $data[] = [
                 'name' => $location->name,
                 'description' => $location->description,
-                'actions' => ActionButton::create('fe-eye', route('locations.show', $location), 'Show')->render()
+                'actions' => ActionButton::create('fe-eye', route('locations.show', $location), 'Show')->render(),
             ];
         }
 

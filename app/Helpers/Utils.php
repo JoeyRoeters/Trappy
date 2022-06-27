@@ -13,7 +13,7 @@ class Utils
 
         $params = http_build_query([
             'latlng' => sprintf('%s,%s', $location->latitude, $location->longitude),
-            'key' => env('GOOGLE_GEOCODING_API_KEY')
+            'key' => env('GOOGLE_GEOCODING_API_KEY'),
         ]);
 
         $request = $client->get('https://maps.googleapis.com/maps/api/geocode/json?' . $params);

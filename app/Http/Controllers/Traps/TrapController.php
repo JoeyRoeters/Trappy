@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Hash;
 
 class TrapController extends Controller
 {
-
     use HasIdentifier;
 
     /**

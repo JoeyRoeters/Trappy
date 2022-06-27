@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Locations;
 
-use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreLocationRequest;
 use App\Http\Requests\UpdateLocationRequest;
@@ -58,7 +57,7 @@ class LocationController extends Controller
             $traps[] = [
                 $trap->name,
                 $trap->is_open ? 'Open' : 'Closed',
-                $trap->battery
+                $trap->battery,
             ];
         }
 
@@ -70,7 +69,7 @@ class LocationController extends Controller
             'address' => $location->getAddress(),
             'totalCatches' => $location->trapActivitiesQuery()->count(),
             'lat' => $location->latitude,
-            'lng' => $location->longitude
+            'lng' => $location->longitude,
         ];
 
         return View('locations/show', $params);
