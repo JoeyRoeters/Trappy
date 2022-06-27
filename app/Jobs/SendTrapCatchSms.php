@@ -37,10 +37,10 @@ class SendTrapCatchSms implements ShouldQueue
      */
     public function handle()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("88ba4799", "XmyyfnqmU9bbT6ld");
+        $basic  = new \Vonage\Client\Credentials\Basic(env('VONAGE_KEY'), env('VONAGE_PASSWORD'));
         $client = new \Vonage\Client($basic);
 
-        $response = $client->sms()->send(
+        $client->sms()->send(
             new \Vonage\SMS\Message\SMS($this->user->phone, 'Trappy', 'Beste ' . $this->user->name . ",
             \nEr is een rat gevangen, de rat is gevangen rond: " . $this->time . "
             \nHet gaat om de volgende val:
