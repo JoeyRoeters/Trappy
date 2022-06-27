@@ -7,12 +7,79 @@ use App\Http\Requests\ConnectTrapRequest;
 use App\Http\Requests\StoreTrapRequest;
 use App\Models\Trap;
 use App\Traits\HasIdentifier;
-use Hash;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TrapController extends Controller
 {
+
     use HasIdentifier;
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return (new Overview())->run();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Trap  $trap
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Trap $trap)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Trap  $trap
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Trap $trap)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Trap  $trap
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Trap $trap)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Trap  $trap
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Trap $trap)
+    {
+        //
+    }
 
     public function store(StoreTrapRequest $request)
     {

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Dashboards\Overview as DashboardOverview;
-use App\Http\Controllers\Locations\Overview as LocationOverview;
 use App\Http\Controllers\Settings\Notifications as NotificationSettings;
 use App\Http\Controllers\Traps\Overview as TrapOverview;
 use Illuminate\Support\Facades\Route;
@@ -23,12 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardOverview::class, 'showPage'])->name('dashboard');
     Route::get('/notifications', [NotificationSettings::class, 'showPage'])->name('notifications');
     Route::put('/notifications', [NotificationSettings::class, 'update'])->name('notifications.update');
-    Route::get('/traps', [TrapOverview::class, 'run'])->name('traps');
-    Route::get('/traps/{id}', function ($id) {
-        return 'appel';
-    })->name('traps.id');
 
-    Route::get('/locations', [LocationOverview::class, 'run'])->name('locations');
+    Route::resource('traps', \App\Http\Controllers\Traps\TrapController::class);
+
+    Route::resource('locations', \App\Http\Controllers\Locations\LocationController::class);
 });
 
 // Unauthenticated routes

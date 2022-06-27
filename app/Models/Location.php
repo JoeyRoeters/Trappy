@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Utils;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -29,6 +30,12 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Location whereName($value)
  * @method static Builder|Location whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property float|null $latitude
+ * @property float|null $longitude
+ * @property string|null $address
+ * @method static Builder|Location whereAddress($value)
+ * @method static Builder|Location whereLatitude($value)
+ * @method static Builder|Location whereLongitude($value)
  */
 class Location extends Model
 {
@@ -42,5 +49,49 @@ class Location extends Model
     public function traps(): HasMany
     {
         return $this->hasMany(Trap::class);
+    }
+
+    public function trapActivitiesQuery(?string $type = null)
+    {
+        $query = TrapActivity::query()->whereHas('trap', function ($q) {
+            $q->whereLocationId($this->id);
+        });
+
+        if ($type !== null) {
+            $query->whereType($type);
+        }
+
+        return $query;
+    }
+
+    public function getAddress(): string
+    {
+        if (!empty($this->address)) {
+            return $this->address;
+        }
+
+        $address = Utils::locationToAddress($this);
+
+        $this->address = $address;
+        $this->save();
+
+        return $address;
+    }
+
+    public function getLatestActivities(): array
+    {
+        $data = [];
+
+        $activities = $this->trapActivitiesQuery(TrapActivity::TYPE_CATCH)->orderByDesc('created_at')->take(5)->get();
+        foreach ($activities as $activity) {
+            $data[] = [
+                'name' => $activity->trap->name,
+                'location' => $activity->trap->getLocationName(),
+                'date' => $activity->created_at?->format('d F H:i'),
+                'url' => route('traps.show', $activity->trap()->first()),
+            ];
+        }
+
+        return $data;
     }
 }

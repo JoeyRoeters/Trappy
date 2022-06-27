@@ -18,6 +18,9 @@
 
         <!-- JQUERY JS -->
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/sweet-alert.js') }}"></script>
+        <script src="{{ asset('assets/plugins/sweet-alert/sweetalert.min.js') }}"></script>
+
 
         <!-- BOOTSTRAP CSS -->
         <link id="style" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -90,4 +93,10 @@
         <script src="{{ asset('assets/js/custom.js') }}"></script>
 
     </body>
+
+<script>
+    @if(Session::has('message'))
+        swal('Success!', '{{ Session::get('message') }}', 'success');
+    @endif
+</script>
 </html>

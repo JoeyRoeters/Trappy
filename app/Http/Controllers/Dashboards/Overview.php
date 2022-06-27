@@ -50,7 +50,7 @@ class Overview extends Controller
                 'name' => $activity->trap->name,
                 'location' => $activity->trap->getLocationName(),
                 'date' => $activity->created_at?->format('d F H:i'),
-                'url' => route('traps.id', $activity->trap_id),
+                'url' => route('traps.show', $activity->trap()->first()),
             ];
         }
 

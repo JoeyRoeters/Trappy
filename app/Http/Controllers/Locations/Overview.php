@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Locations;
 
 use App\Helpers\Overview\AbstractOverviewController;
+use App\Helpers\Overview\ActionButton\ActionButton;
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Models\Location;
+use League\CommonMark\Util\HtmlElement;
 
 class Overview extends AbstractOverviewController
 {
@@ -14,6 +16,7 @@ class Overview extends AbstractOverviewController
 
         $dataTable->addHeader('name', 'Name');
         $dataTable->addHeader('description', 'Description');
+        $dataTable->addHeader('actions', 'Actions');
 
         return $dataTable;
     }
@@ -27,6 +30,7 @@ class Overview extends AbstractOverviewController
             $data[] = [
                 'name' => $location->name,
                 'description' => $location->description,
+                'actions' => ActionButton::create('fe-eye', route('locations.show', $location), 'Show')->render()
             ];
         }
 

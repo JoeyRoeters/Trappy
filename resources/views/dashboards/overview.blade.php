@@ -102,15 +102,19 @@
                         </div>
                         <div class="card-body pb-0">
                             <ul class="task-list">
-                                @foreach($activities as $activity)
-                                    <li class="d-sm-flex">
-                                        <div>
-                                            <i class="task-icon bg-primary"></i>
-                                            <h6 class="fw-semibold">{{ $activity['name'] }}<span class="text-muted fs-11 mx-2 fw-normal">{{ $activity['date'] }}</span> </h6>
-                                            <p class="text-muted fs-12">There was a catch at {{ $activity['location'] }} on trap <a href="{{ $activity['url'] }}" class="fw-semibold"> {{ $activity['name'] }}</a></p>
-                                        </div>
-                                    </li>
-                                @endforeach
+                                @if(empty($activities))
+                                    <li>No catches yet</li>
+                                @else
+                                    @foreach($activities as $activity)
+                                        <li class="d-sm-flex">
+                                            <div>
+                                                <i class="task-icon bg-primary"></i>
+                                                <h6 class="fw-semibold">{{ $activity['name'] }}<span class="text-muted fs-11 mx-2 fw-normal">{{ $activity['date'] }}</span> </h6>
+                                                <p class="text-muted fs-12">There was a catch at {{ $activity['location'] }} on trap <a href="{{ $activity['url'] }}" class="fw-semibold"> {{ $activity['name'] }}</a></p>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
