@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\TrapCatch;
+use App\Jobs\SendTrapCatchSms;
 use App\Mail\TrapCatchMail;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -36,10 +37,15 @@ class SendTrapCatchNotification implements ShouldQueue
             ->orWhere([['notification_settings->notify_email', true], ['notification_settings->traps', '=', '[]']])
             ->get();
 
-        //TODO
         $smsUsers = User::where('notification_settings->notify_sms', true)
             ->whereJsonContains('notification_settings->traps', $trap->id)
+            ->orWhere([['notification_settings->notify_sms', true], ['notification_settings->traps', '=', '[]']])
             ->get();
+
+
+        foreach($smsUsers as $user) {
+            SendTrapCatchSms::dispatch($trap, $user, $time);
+        }
 
         foreach ($emailUsers as $user) {
             Mail::to($user->email)->queue(new TrapCatchMail($trap, $user, $time));
