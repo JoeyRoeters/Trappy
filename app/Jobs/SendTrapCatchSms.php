@@ -15,7 +15,9 @@ class SendTrapCatchSms implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private Trap $trap;
+
     private User $user;
+
     private $time;
 
     /**
@@ -37,7 +39,7 @@ class SendTrapCatchSms implements ShouldQueue
      */
     public function handle()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic("88ba4799", "XmyyfnqmU9bbT6ld");
+        $basic = new \Vonage\Client\Credentials\Basic('88ba4799', 'XmyyfnqmU9bbT6ld');
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(

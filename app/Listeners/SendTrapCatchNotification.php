@@ -42,8 +42,7 @@ class SendTrapCatchNotification implements ShouldQueue
             ->orWhere([['notification_settings->notify_sms', true], ['notification_settings->traps', '=', '[]']])
             ->get();
 
-
-        foreach($smsUsers as $user) {
+        foreach ($smsUsers as $user) {
             SendTrapCatchSms::dispatch($trap, $user, $time);
         }
 
