@@ -39,7 +39,7 @@ class SendTrapCatchSms implements ShouldQueue
      */
     public function handle()
     {
-        $basic  = new \Vonage\Client\Credentials\Basic(env('VONAGE_KEY'), env('VONAGE_PASSWORD'));
+        $basic = new \Vonage\Client\Credentials\Basic(env('VONAGE_KEY'), env('VONAGE_PASSWORD'));
         $client = new \Vonage\Client($basic);
 
         $client->sms()->send(
