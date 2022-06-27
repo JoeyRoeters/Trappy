@@ -51,7 +51,7 @@ class TrapController extends Controller
         if ($trap->status !== 'inactive') {
             return response()->json([
                 'error' => 'Trap already connected',
-            ]);
+            ], 422);
         }
 
         $trap->update([

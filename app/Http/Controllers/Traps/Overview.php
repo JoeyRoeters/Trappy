@@ -28,7 +28,7 @@ class Overview extends AbstractOverviewController
             $data[] = [
                 'name' => $trap->name,
                 'description' => $trap->description,
-                'battery' => 100,
+                'battery' => $trap->battery,
             ];
         }
 

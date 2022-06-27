@@ -98,7 +98,7 @@
                 <div class="col-xl-4 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title fw-semibold">Latest activity</h4>
+                            <h4 class="card-title fw-semibold">Latest catches</h4>
                         </div>
                         <div class="card-body pb-0">
                             <ul class="task-list">

@@ -16,8 +16,10 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
+            $table->string('battery')->nullable();
+            $table->boolean('is_open')->nullable()->default(true);
             $table->integer('location_id')->nullable();
-            $table->enum('status', ['active', 'inactive', 'error'])->default('inactive');
+            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->string('identifier');
             $table->timestamps();
             $table->softDeletes();

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 trait HasIdentifier
 {
-    public function identifyTrap($identifier)
+    public function identifyTrap($identifier): Trap|null
     {
         $traps = Trap::all();
 

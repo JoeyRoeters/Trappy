@@ -14,11 +14,8 @@
 use App\Http\Controllers\Traps\TrapActivityController;
 use App\Http\Controllers\Traps\TrapController;
 
-//For testing purposes
-Route::post('/trap', [TrapController::class, 'store']);
-
 //API Routes
 Route::prefix('trap')->group(function () {
     Route::post('/connect', [TrapController::class, 'connect']);
-    Route::post('/activity', [TrapActivityController::class, 'store']);
+    Route::post('/sync', [TrapActivityController::class, 'sync']);
 });
