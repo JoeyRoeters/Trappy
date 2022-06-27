@@ -15,7 +15,9 @@ class SendTrapCatchSms implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private Trap $trap;
+
     private User $user;
+
     private $time;
 
     /**
