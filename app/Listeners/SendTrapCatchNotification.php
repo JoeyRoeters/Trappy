@@ -6,7 +6,6 @@ use App\Events\TrapCatch;
 use App\Jobs\SendTrapCatchSms;
 use App\Mail\TrapCatchMail;
 use App\Models\User;
-use App\Models\UserNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 

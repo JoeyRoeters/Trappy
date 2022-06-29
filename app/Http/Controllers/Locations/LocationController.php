@@ -31,7 +31,7 @@ class LocationController extends Controller
         $params = [
             'title' => 'New location',
             'lat' => 53.24097,
-            'lng' => 6.53439
+            'lng' => 6.53439,
         ];
 
         return view('locations/create', $params);
@@ -110,7 +110,7 @@ class LocationController extends Controller
             'title' => $location->name,
             'lat' => $location->latitude,
             'lng' => $location->longitude,
-            'location' => $location
+            'location' => $location,
         ];
 
         return view('locations/create', $params);

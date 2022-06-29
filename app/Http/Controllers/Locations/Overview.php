@@ -6,7 +6,6 @@ use App\Helpers\Overview\AbstractOverviewController;
 use App\Helpers\Overview\ActionButton\ActionButton;
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Models\Location;
-use App\Models\Trap;
 
 class Overview extends AbstractOverviewController
 {

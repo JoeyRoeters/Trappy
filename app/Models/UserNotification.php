@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * App\Models\UserNotification
+ * App\Models\UserNotification.
  *
  * @property int $user_id
  * @property string $type
@@ -43,7 +43,8 @@ class UserNotification extends Model
         return $this->hasOne(Trap::class);
     }
 
-    private function timeElapsed($datetime, $full = false) {
+    private function timeElapsed($datetime, $full = false)
+    {
         $now = new DateTime;
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);
@@ -56,7 +57,7 @@ class UserNotification extends Model
             'm' => 'month',
             'w' => 'week',
             'd' => 'day',
-            'h' => 'hour'
+            'h' => 'hour',
         ];
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
@@ -66,7 +67,10 @@ class UserNotification extends Model
             }
         }
 
-        if (!$full) $string = array_slice($string, 0, 1);
+        if (!$full) {
+            $string = array_slice($string, 0, 1);
+        }
+
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 

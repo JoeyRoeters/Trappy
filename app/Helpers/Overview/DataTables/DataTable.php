@@ -51,7 +51,6 @@ class DataTable
         return $this->name;
     }
 
-
     public function getRoute(): string
     {
         return $this->route;
