@@ -42,9 +42,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="btn-profile">
-                                                    <button class="btn btn-warning mt-1 mb-1">
+                                                    <a class="btn btn-warning mt-1 mb-1" href="{{ route('locations.edit', $location) }}">
                                                         <i class="fa fa-edit"></i><span>Edit</span>
-                                                    </button>
+                                                    </a>
                                                     <form id="delete" action="{{ route('locations.destroy', $location) }}" method="POST">
                                                         @method('delete')
                                                         @csrf

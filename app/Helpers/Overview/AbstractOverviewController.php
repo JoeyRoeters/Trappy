@@ -29,6 +29,7 @@ abstract class AbstractOverviewController extends Controller
 
         $parameters = [
             'title' => $dataTable->getName(),
+            'addNew' => $dataTable->getRoute(),
             'headers' => $headers,
             'rows' => $rows,
         ];

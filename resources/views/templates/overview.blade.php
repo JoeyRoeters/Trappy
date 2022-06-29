@@ -23,6 +23,15 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+                            @if(isset($addNew))
+                                <div class="d-flex justify-content-end mb-3">
+                                    <a class="btn btn-primary" href="{{ $addNew }}">
+                                        <i class="fe fe-plus"></i>
+                                        Add new
+                                    </a>
+                                </div>
+                            @endif
+
                             <div class="table-responsive">
                                 <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
                                     <thead>

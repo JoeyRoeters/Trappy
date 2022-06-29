@@ -42,7 +42,7 @@
                                         <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
                                     </div>
 
-                                    <button type="submit" class="login100-form-btn btn-primary mt-3">Login</button>
+                                    <button type="submit" class="login100-form-btn btn btn-primary mt-3">Sign-in</button>
                             </div>
                         </div>
                     </div>

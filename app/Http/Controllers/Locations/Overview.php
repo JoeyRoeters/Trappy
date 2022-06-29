@@ -6,12 +6,13 @@ use App\Helpers\Overview\AbstractOverviewController;
 use App\Helpers\Overview\ActionButton\ActionButton;
 use App\Helpers\Overview\DataTables\DataTable;
 use App\Models\Location;
+use App\Models\Trap;
 
 class Overview extends AbstractOverviewController
 {
     protected function overview(): DataTable
     {
-        $dataTable = DataTable::create('Locations');
+        $dataTable = DataTable::create('Locations', route('locations.create'));
 
         $dataTable->addHeader('name', 'Name');
         $dataTable->addHeader('description', 'Description');

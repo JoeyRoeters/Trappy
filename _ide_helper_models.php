@@ -33,9 +33,9 @@ namespace App\Models{
  * @property float|null $latitude
  * @property float|null $longitude
  * @property string|null $address
- * @method static \Illuminate\Database\Eloquent\Builder|Location whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Location whereLatitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Location whereLongitude($value)
+ * @method static Builder|Location whereAddress($value)
+ * @method static Builder|Location whereLatitude($value)
+ * @method static Builder|Location whereLongitude($value)
  */
 	class Location extends \Eloquent {}
 }
@@ -92,6 +92,11 @@ namespace App\Models{
  * @property string $status
  * @method static Builder|Trap whereStatus($value)
  * @method static Builder|Trap whereIsOpen($value)
+ * @property string $identifier
+ * @method static Builder|Trap whereBattery($value)
+ * @method static Builder|Trap whereIdentifier($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\UserNotification[] $userNotifications
+ * @property-read int|null $user_notifications_count
  */
 	class Trap extends \Eloquent {}
 }
@@ -154,7 +159,35 @@ namespace App\Models{
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Collection|\App\Models\UserNotification[] $userNotifications
+ * @property-read int|null $user_notifications_count
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserNotification
+ *
+ * @property int $user_id
+ * @property string $type
+ * @property string $text
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereUserId($value)
+ * @mixin \Eloquent
+ * @property int $trap_id
+ * @method static \Illuminate\Database\Eloquent\Builder|UserNotification whereTrapId($value)
+ * @property-read \App\Models\Trap|null $trap
+ */
+	class UserNotification extends \Eloquent {}
 }
 

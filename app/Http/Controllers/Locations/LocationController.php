@@ -28,7 +28,13 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        $params = [
+            'title' => 'New location',
+            'lat' => 53.24097,
+            'lng' => 6.53439
+        ];
+
+        return view('locations/create', $params);
     }
 
     /**
@@ -39,7 +45,24 @@ class LocationController extends Controller
      */
     public function store(StoreLocationRequest $request)
     {
-        //
+        $location = new Location();
+
+        $location->name = $request->get('name');
+        $location->description = $request->get('description', 'No description given');
+
+        $latlng = $request->get('location');
+        if (!empty($latlng)) {
+            $latlng = json_decode($latlng);
+
+            $location->latitude = $latlng->lat;
+            $location->longitude = $latlng->lng;
+        }
+
+        $location->save();
+
+        Session::flash('message', 'Location created!');
+
+        return redirect(route('locations.show', $location));
     }
 
     /**
@@ -83,7 +106,14 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        //
+        $params = [
+            'title' => $location->name,
+            'lat' => $location->latitude,
+            'lng' => $location->longitude,
+            'location' => $location
+        ];
+
+        return view('locations/create', $params);
     }
 
     /**
@@ -95,7 +125,26 @@ class LocationController extends Controller
      */
     public function update(UpdateLocationRequest $request, Location $location)
     {
-        //
+        $location->name = $request->get('name');
+        $location->description = $request->get('description', 'No description given');
+
+        $latlng = $request->get('location');
+        if (!empty($latlng) && $latlng !== 'null') {
+            $latlng = json_decode($latlng);
+
+            if ($latlng->lat !== $location->latitude || $latlng->lng !== $location->longitude) {
+                $location->latitude = $latlng->lat;
+                $location->longitude = $latlng->lng;
+
+                $location->getAddress(true);
+            }
+        } else {
+            $location->save();
+        }
+
+        Session::flash('message', 'Location saved!');
+
+        return redirect(route('locations.show', $location));
     }
 
     /**

@@ -64,9 +64,9 @@ class Location extends Model
         return $query;
     }
 
-    public function getAddress(): string
+    public function getAddress(bool $refresh = false): string
     {
-        if (!empty($this->address)) {
+        if (!empty($this->address) && !$refresh) {
             return $this->address;
         }
 

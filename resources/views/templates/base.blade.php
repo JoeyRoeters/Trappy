@@ -35,45 +35,28 @@
                                             </div>
                                         </div>
                                         <div class="notifications-menu">
-                                            <a class="dropdown-item d-flex" href="notify-list.html">
-                                                <div class="me-3 notifyimg  bg-primary brround box-shadow-primary">
-                                                    <i class="fe fe-mail"></i>
+                                            @php($notifications = Auth::user()->userNotifications()->limit(5)->orderByDesc('created_at')->get())
+
+                                            @if(count($notifications) > 0)
+                                                @foreach($notifications as $notification)
+                                                    <a class="dropdown-item d-flex" href="{{ route('traps.show', $notification->trap_id) }}">
+                                                        <div class="me-3 notifyimg  bg-primary brround box-shadow-primary">
+                                                            <i class="fe fe-mail"></i>
+                                                        </div>
+                                                        <div class="mt-1 wd-80p">
+                                                            <h5 class="notification-label mb-1">{{ $notification->text }}</h5>
+                                                            <span class="notification-subtext">{{ $notification->ago() }}</span>
+                                                        </div>
+                                                    </a>
+                                                @endforeach
+                                            @else
+                                                <div class="dropdown-item">
+                                                    No notifications yet
                                                 </div>
-                                                <div class="mt-1 wd-80p">
-                                                    <h5 class="notification-label mb-1">New Application received</h5>
-                                                    <span class="notification-subtext">3 days ago</span>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item d-flex" href="notify-list.html">
-                                                <div class="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
-                                                    <i class="fe fe-check-circle"></i>
-                                                </div>
-                                                <div class="mt-1 wd-80p">
-                                                    <h5 class="notification-label mb-1">Project has been approved</h5>
-                                                    <span class="notification-subtext">2 hours ago</span>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item d-flex" href="notify-list.html">
-                                                <div class="me-3 notifyimg  bg-success brround box-shadow-success">
-                                                    <i class="fe fe-shopping-cart"></i>
-                                                </div>
-                                                <div class="mt-1 wd-80p">
-                                                    <h5 class="notification-label mb-1">Your Product Delivered</h5>
-                                                    <span class="notification-subtext">30 min ago</span>
-                                                </div>
-                                            </a>
-                                            <a class="dropdown-item d-flex" href="notify-list.html">
-                                                <div class="me-3 notifyimg bg-pink brround box-shadow-pink">
-                                                    <i class="fe fe-user-plus"></i>
-                                                </div>
-                                                <div class="mt-1 wd-80p">
-                                                    <h5 class="notification-label mb-1">Friend Requests</h5>
-                                                    <span class="notification-subtext">1 day ago</span>
-                                                </div>
-                                            </a>
+                                            @endif
                                         </div>
                                         <div class="dropdown-divider m-0"></div>
-                                        <a href="notify-list.html" class="dropdown-item text-center p-3 text-muted">View all Notification</a>
+                                        <a href="{{ route('notifications') }}" class="dropdown-item text-center p-3 text-muted">Go to notification settings</a>
                                     </div>
                                 </div>
                                 <!-- SIDE-MENU -->
@@ -111,7 +94,7 @@
         <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
         <div class="app-sidebar">
             <div class="side-header">
-                <a class="header-brand1" href="index.html">
+                <a class="header-brand1" href="{{ route('dashboard') }}">
                     <img src="{{ asset('assets/images/logo_only.png') }}" height="50" class="header-brand-img p-1" alt="logo">
                 </a>
                 <!-- LOGO -->
@@ -119,12 +102,14 @@
             <div class="main-sidemenu">
                 <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"/></svg></div>
                 <ul class="side-menu">
+                    <hr>
                     <li class="sub-category">
                         <h3>Main</h3>
                     </li>
                     <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="{{ route('dashboard') }}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">Dashboard</span></a>
                     </li>
+                    <hr>
                     <li class="sub-category">
                         <h3>General</h3>
                     </li>

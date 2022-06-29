@@ -39,6 +39,9 @@ use Illuminate\Support\Carbon;
  * @property string $status
  * @method static Builder|Trap whereStatus($value)
  * @method static Builder|Trap whereIsOpen($value)
+ * @property string $identifier
+ * @method static Builder|Trap whereBattery($value)
+ * @method static Builder|Trap whereIdentifier($value)
  */
 class Trap extends Model
 {
@@ -67,5 +70,10 @@ class Trap extends Model
     public function activities(): HasMany
     {
         return $this->hasMany(TrapActivity::class);
+    }
+
+    public function userNotifications(): HasMany
+    {
+        return $this->hasMany(UserNotification::class);
     }
 }

@@ -6,6 +6,7 @@ use App\Events\TrapCatch;
 use App\Jobs\SendTrapCatchSms;
 use App\Mail\TrapCatchMail;
 use App\Models\User;
+use App\Models\UserNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Mail;
 
@@ -48,6 +49,11 @@ class SendTrapCatchNotification implements ShouldQueue
 
         foreach ($emailUsers as $user) {
             Mail::to($user->email)->queue(new TrapCatchMail($trap, $user, $time));
+        }
+
+        $sendUsers = array_merge_recursive_distinct($smsUsers, $emailUsers);
+        foreach ($sendUsers as $user) {
+            $user->newNotification('New catch at: ' . $trap->name, $trap);
         }
     }
 }

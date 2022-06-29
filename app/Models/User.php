@@ -7,6 +7,7 @@ use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
@@ -47,6 +48,8 @@ use Laravel\Sanctum\PersonalAccessToken;
  * @method static Builder|User whereRememberToken($value)
  * @method static Builder|User whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property-read Collection|\App\Models\UserNotification[] $userNotifications
+ * @property-read int|null $user_notifications_count
  */
 class User extends Authenticatable
 {
@@ -92,4 +95,20 @@ class User extends Authenticatable
             "traps": []
         }',
     ];
+
+    public function userNotifications(): HasMany
+    {
+        return $this->hasMany(UserNotification::class);
+    }
+
+    public function newNotification(Trap $trap): void
+    {
+        $notification = new UserNotification();
+
+        $notification->text = 'New catch at: ' . $trap->name;
+        $notification->trap_id = $trap->id;
+        $notification->user_id = $this->id;
+
+        $notification->save();
+    }
 }

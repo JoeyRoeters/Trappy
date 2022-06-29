@@ -8,16 +8,13 @@ class DataTable
 
     private array $rows = [];
 
-    private string $name;
-
-    public function __construct(string $name)
+    public function __construct(private string $name, private string $route)
     {
-        $this->name = $name;
     }
 
-    public static function create(string $name): self
+    public static function create(string $name, string $route): self
     {
-        return new self($name);
+        return new self($name, $route);
     }
 
     public function addHeader(string $key, string $title): self
@@ -52,6 +49,12 @@ class DataTable
     public function getName(): string
     {
         return $this->name;
+    }
+
+
+    public function getRoute(): string
+    {
+        return $this->route;
     }
 
     public function getRows(): array
