@@ -124,7 +124,7 @@
                         <ul class="slide-menu">
                             <li class="side-menu-label1"><a href="javascript:void(0)">More</a></li>
                             <li><a href="{{ route('notifications') }}" class="slide-item">Notifications</a></li>
-                            <li><a href="maps2.html" class="slide-item">Settings</a></li>
+                            <li><a href="#" class="slide-item">Settings</a></li>
                         </ul>
                     </li>
                 </ul>

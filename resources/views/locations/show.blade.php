@@ -110,7 +110,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
                             <h4 class="card-title fw-semibold">Location traps</h4>
-                            <a class="btn btn-primary" href="{{ route('traps.create') }}">
+                            <a class="btn btn-primary disabled"  href="#">
                                 <i class="fe fe-plus"></i>
                                 Add new trap
                             </a>

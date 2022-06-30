@@ -10,7 +10,7 @@ class Overview extends AbstractOverviewController
 {
     protected function overview(): DataTable
     {
-        $dataTable = DataTable::create('Traps', route('locations.create'));
+        $dataTable = DataTable::create('Traps', route('traps.create'));
 
         $dataTable->addHeader('name', 'Name');
         $dataTable->addHeader('description', 'Description');
