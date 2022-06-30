@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Traps;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ConnectTrapRequest;
 use App\Http\Requests\StoreTrapRequest;
+use App\Models\Location;
 use App\Models\Trap;
+use App\Models\TrapActivity;
+use App\Models\User;
 use App\Traits\HasIdentifier;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class TrapController extends Controller
 {
@@ -32,7 +36,12 @@ class TrapController extends Controller
      */
     public function create()
     {
-        //
+        $params = [
+            'title' => 'New trap',
+            'locations' => Location::get()
+        ];
+
+        return view('traps/create', $params);
     }
 
     /**
@@ -43,7 +52,15 @@ class TrapController extends Controller
      */
     public function show(Trap $trap)
     {
-        //
+        $params = [
+            'title' => $trap->name,
+            'trap' => $trap,
+            'activities' => $trap->getTrapActivities(),
+            'address' => $trap?->location()?->first()?->getAddress(),
+            'totalCatches' => $trap->activities()->whereType(TrapActivity::TYPE_CATCH)->count()
+        ];
+
+        return View('traps/show', $params);
     }
 
     /**
@@ -54,7 +71,13 @@ class TrapController extends Controller
      */
     public function edit(Trap $trap)
     {
-        //
+        $params = [
+            'title' => $trap->name,
+            'trap' => $trap,
+            'locations' => Location::get()
+        ];
+
+        return view('traps/create', $params);
     }
 
     /**
@@ -66,7 +89,13 @@ class TrapController extends Controller
      */
     public function update(Request $request, Trap $trap)
     {
-        //
+        $trap->update([
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
+            'location_id' => $request->get('location_id'),
+        ]);
+
+        return redirect(route('traps.show', $trap));
     }
 
     /**
@@ -77,7 +106,12 @@ class TrapController extends Controller
      */
     public function destroy(Trap $trap)
     {
-        //
+        $isDeleted = $trap->delete();
+        if ($isDeleted) {
+            Session::flash('message', 'Trap ' . $trap->name . ' deleted!');
+        }
+
+        return redirect('traps');
     }
 
     public function store(StoreTrapRequest $request)
@@ -92,12 +126,16 @@ class TrapController extends Controller
             ], 422);
         }
 
-        Trap::create([
+        $trap = Trap::create([
             'name' => $data->name,
             'description' => $data->description,
             'location_id' => $data->location_id,
             'identifier' => Hash::make($data->identifier),
         ]);
+
+        if (\Auth::getUser() instanceof User) {
+            return redirect(route('traps.show', $trap));
+        }
 
         return response('Trap created', 201);
     }

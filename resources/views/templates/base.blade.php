@@ -71,10 +71,6 @@
                                                 <small class="text-muted">{{ Auth::user()->email }}</small>
                                             </div>
                                         </div>
-                                        <div class="dropdown-divider m-0"></div>
-                                        <a class="dropdown-item" href="profile.html">
-                                            <i class="dropdown-icon fe fe-user"></i> Profile
-                                        </a>
                                         <a class="dropdown-item" href="{{ route('auth.logout') }}">
                                             <i class="dropdown-icon fe fe-alert-circle"></i> Sign out
                                         </a>
@@ -124,7 +120,6 @@
                         <ul class="slide-menu">
                             <li class="side-menu-label1"><a href="javascript:void(0)">More</a></li>
                             <li><a href="{{ route('notifications') }}" class="slide-item">Notifications</a></li>
-                            <li><a href="maps2.html" class="slide-item">Settings</a></li>
                         </ul>
                     </li>
                 </ul>

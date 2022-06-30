@@ -76,4 +76,21 @@ class Trap extends Model
     {
         return $this->hasMany(UserNotification::class);
     }
+
+    public function getTrapActivities(): array
+    {
+        $data = [];
+
+        $activities = $this->activities()->whereType(TrapActivity::TYPE_CATCH)->orderByDesc('created_at')->take(5)->get();
+        foreach ($activities as $activity) {
+            $data[] = [
+                'name' => $activity->trap->name,
+                'location' => $activity->trap->getLocationName(),
+                'date' => $activity->created_at?->format('d F H:i'),
+                'url' => route('locations.show', $this->location()->first()),
+            ];
+        }
+
+        return $data;
+    }
 }
