@@ -11,6 +11,7 @@ use App\Models\TrapActivity;
 use App\Models\User;
 use App\Traits\HasIdentifier;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -32,7 +33,7 @@ class TrapController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
     public function create()
     {
