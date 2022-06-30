@@ -39,7 +39,7 @@ class TrapController extends Controller
     {
         $params = [
             'title' => 'New trap',
-            'locations' => Location::get()
+            'locations' => Location::get(),
         ];
 
         return view('traps/create', $params);
@@ -58,7 +58,7 @@ class TrapController extends Controller
             'trap' => $trap,
             'activities' => $trap->getTrapActivities(),
             'address' => $trap?->location()?->first()?->getAddress(),
-            'totalCatches' => $trap->activities()->whereType(TrapActivity::TYPE_CATCH)->count()
+            'totalCatches' => $trap->activities()->whereType(TrapActivity::TYPE_CATCH)->count(),
         ];
 
         return View('traps/show', $params);
@@ -75,7 +75,7 @@ class TrapController extends Controller
         $params = [
             'title' => $trap->name,
             'trap' => $trap,
-            'locations' => Location::get()
+            'locations' => Location::get(),
         ];
 
         return view('traps/create', $params);
